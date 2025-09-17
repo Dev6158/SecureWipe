@@ -37,17 +37,17 @@ A Python-based prototype tool for **secure data wiping**, designed for SIH demon
 
 ### 1. Interactive Mode (Safe Demo)
 ```bash
-python secure_erase_prototype.py --interactive --dry-run
+python secure_wipe.py --interactive --dry-run
 ```
 
 ### 2. Full SSD Erasure
 - For **NVMe** SSDs:
   ```bash
-  sudo python secure_erase_prototype.py --device /dev/nvme0n1 --nvme
+  sudo python secure_wipe.py --device /dev/nvme0n1 --nvme
   ```
 - For **ATA** SSDs:
   ```bash
-  sudo python secure_erase_prototype.py --device /dev/sda
+  sudo python secure_wipe.py --device /dev/sda
   ```
 
 ⚠️ **Warning:** These operations are destructive — use only on disposable test drives.
@@ -55,11 +55,11 @@ python secure_erase_prototype.py --interactive --dry-run
 ### 3. File-level Crypto-Shred
 - Safe demo (no overwrite):
   ```bash
-  python secure_erase_prototype.py --cryptoshred --file /path/to/test.txt --dry-run
+  python secure_wipe.py --cryptoshred --file /path/to/test.txt --dry-run
   ```
 - Real crypto-shred (irreversible):
   ```bash
-  python secure_erase_prototype.py --cryptoshred --file /path/to/test.txt
+  python secure_wipe.py --cryptoshred --file /path/to/test.txt
   ```
 
 Certificates are stored in the `certificates/` directory.
@@ -68,7 +68,7 @@ Certificates are stored in the `certificates/` directory.
 
 ## 📂 Project Structure
 ```
-secure_erase_prototype.py   # Main prototype script
+secure_wipe.py   # Main prototype script
 certificates/               # Generated PDF + JSON certificates
 ```
 

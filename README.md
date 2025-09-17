@@ -1,37 +1,38 @@
 # SecureWipe
 # SecureErase Prototype
 
-A Python-based prototype tool for **secure data wiping**, designed for SIH demonstration purposes. It supports both **full-disk cryptographic erasure** (for SSDs) and **single-file crypto-shredding** (file-level secure erase).
+A Python-based **secure data wiping prototype**, designed for **Smart India Hackathon (SIH)** demos. Supports **full-disk cryptographic erasure** (for SSDs) and **file-level crypto-shredding**, with verifiable certificates for compliance.
 
 ---
 
 ## ✨ Features
 - **Full SSD Erasure**
-  - ATA Secure Erase (via `hdparm`)
-  - NVMe Crypto Erase (via `nvme-cli`)
-  - Auto-detection of device type
-  - Dry-run simulation for safe demos
-- **File-level Crypto-shred**
-  - Encrypts file with a one-time AES-GCM key, then destroys the key
-  - Replaces original file with encrypted garbage data
-  - Generates a **JSON + PDF certificate** containing key fingerprint & metadata
+  - ATA Secure Erase (via `hdparm`)  
+  - NVMe Crypto Erase (via `nvme-cli`)  
+  - Auto-detection of device type  
+  - Dry-run simulation for safe demos  
+- **File-level Crypto-Shred**
+  - AES-GCM encryption with a one-time key  
+  - Chunked encryption for large files  
+  - Replaces original file with securely shredded data  
+  - Generates **JSON + PDF certificates** with key fingerprint & metadata  
 - **Certificates**
-  - Timestamped PDF + JSON records for compliance & audit
-- **Demo Friendly**
-  - `--dry-run` mode for showing judges workflow without destructive actions
+  - Timestamped PDF + JSON for audit & compliance  
+  - Dry-run still generates demo certificates for safe demos  
+- **Interactive Mode**
+  - Guided menu for safe demonstrations  
+  - Allows full SSD erase or file crypto-shred in a controlled environment  
 
 ---
 
 ## ⚙️ Requirements
 - **System Tools**
-  - `hdparm` (for ATA SSDs)
-  - `nvme-cli` (for NVMe SSDs)
+  - `hdparm` (for ATA SSDs)  
+  - `nvme-cli` (for NVMe SSDs)  
 - **Python Packages**
-  ```bash
-  pip install reportlab cryptography
-  ```
+```bash
+pip install reportlab cryptography
 
----
 
 ## 🚀 Usage
 
@@ -75,17 +76,17 @@ certificates/               # Generated PDF + JSON certificates
 ---
 
 ## 🛡️ Limitations
-- File-level shred currently loads entire file into RAM (prototype limitation).
-- Requires root privileges for actual disk erasure.
-- Effectiveness of TRIM/overwrite operations depends on SSD firmware.
-- For production: implement chunked streaming encryption, GUI frontend, and vendor-specific support.
+Full SSD erase requires root privileges.
 
+Effectiveness of TRIM/overwrite may vary by SSD firmware.
+
+Currently prototype-only; for production: add GUI, vendor-specific support, and advanced logging.
 ---
 
 ## 🎯 SIH Pitch Angle
-> “Our tool provides **two-layer secure data sanitization**: enterprise-grade disk-level crypto-erase for IT asset disposal, and user-friendly file-level crypto-shredding for everyday use. Both produce verifiable certificates, bridging compliance with usability.”
+> “SecureWipe provides two-layer data sanitization: enterprise-grade disk-level crypto-erase for IT asset disposal, and user-friendly file-level crypto-shredding for everyday use. Both operations generate verifiable certificates, bridging compliance with usability.”
 
 ---
 
 ## 👨‍💻 Authors
-Developed by Team **ZeroTrust** for **Smart India Hackathon (SIH)**.
+Developed by Team **ZeroTrace** for **Smart India Hackathon (SIH)**.
